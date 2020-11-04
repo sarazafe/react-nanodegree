@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Game from './Game'
+import Score from './Score'
 
 class App extends Component {
 
@@ -46,6 +48,7 @@ class App extends Component {
 	}
 
 	render() {
+		const {value1, value2, value3, proposedAnswer} = this.state;
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -54,14 +57,8 @@ class App extends Component {
 				</header>
 				<div className="game">
 					<h2>Mental Math</h2>
-					<div className="equation">
-						<p className="text">{`${this.state.value1} + ${this.state.value2} + ${this.state.value3} = ${this.state.proposedAnswer}`}</p>
-					</div>
-					<button onClick={() => this.checkAnswer(true)}>True</button>
-					<button onClick={() => this.checkAnswer(false)}>False</button>
-					<p className="text">
-						Your Score: {this.state.numCorrect}/{this.state.numQuestions}
-					</p>
+					<Game value1={value1} value2={value2} value3={value3} proposedAnswer={proposedAnswer} checkAnswer={this.checkAnswer} />
+					<Score numCorrect={this.state.numCorrect} numQuestions={this.state.numQuestions}/>
 				</div>
 			</div>
 		);
