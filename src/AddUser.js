@@ -77,7 +77,7 @@ class AddUser extends Component {
 					name="username"
 					onChange={this.handleChange}
 				/>
-				<button disabled={this.formIsIncomplete()}>Add</button>
+				<button disabled={this.formIsIncomplete()} className="smallButton">Add</button>
 			</form>
 		</div>);
 	}

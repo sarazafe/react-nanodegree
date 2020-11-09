@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AddUser from "./AddUser";
-import {UsersList} from "./UsersList";
+import UsersList from "./UsersList";
 
 /*
 This exercise will help you put together and practice all of the concepts you've

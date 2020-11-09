@@ -1,5 +1,5 @@
 import React from "react";
 
-export const User = ({username, numGamesPlayed}) => {
-	return <p>{username} played {numGamesPlayed} games</p>;
+export const User = ({username, numGamesPlayed, showNumGamesPlayed}) => {
+	return <p>{username} played {showNumGamesPlayed ? numGamesPlayed : '*'} games</p>;
 }
