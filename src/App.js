@@ -14,12 +14,12 @@ The instructions for this project are located in the `instructions.md` file.
 
 class App extends Component {
 	state = {
-		users: []
+		users: [],
 	}
 
 	onAddUser = ({user}) => {
 		const {users} = this.state;
-		if(users.findIndex(usr => usr.username === user.username) < 0){
+		if (users.findIndex(usr => usr.username === user.username) < 0) {
 			user.numGamesPlayed = 0;
 			this.setState(currState => ({
 				users: [...currState.users, user],
@@ -35,7 +35,7 @@ class App extends Component {
 					<h1 className="App-title">ReactND - Coding Practice</h1>
 				</header>
 				<UsersList users={this.state.users}/>
-				<AddUser onAddUser={this.onAddUser}/>
+				<AddUser onAddUser={this.onAddUser} users={this.state.users}/>
 			</div>
 		);
 	}

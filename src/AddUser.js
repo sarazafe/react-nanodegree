@@ -8,6 +8,7 @@ class AddUser extends Component {
 			surname: '',
 			username: '',
 		},
+		existingUser: false,
 	}
 
 	formIsIncomplete = () => {
@@ -27,20 +28,32 @@ class AddUser extends Component {
 
 	addUser = event => {
 		event.preventDefault();
-		this.props.onAddUser(this.state);
-		this.setState({
-			user: {
-				name: '',
-				surname: '',
-				username: '',
-			},
-		});
-		this.nameInput.focus();
+		const {onAddUser, users} = this.props;
+		const {username} = this.state.user;
+		const existingUser = users.findIndex(usr => usr.username === username) >= 0;
+		this.setState(()=>({
+			existingUser,
+		}))
+		if(!existingUser){
+			onAddUser(this.state);
+			this.setState({
+				user: {
+					name: '',
+					surname: '',
+					username: '',
+				},
+			});
+			this.nameInput.focus();
+		}
 	};
 
 	render() {
-		const {name, surname, username} = this.state.user;
+		const {user, existingUser} = this.state;
+		const {name, surname, username} = user;
 		return (<div>
+			{existingUser && (
+				<div>The user already exists</div>
+			)}
 			<form onSubmit={this.addUser}>
 				<input
 					type="text"
@@ -72,6 +85,7 @@ class AddUser extends Component {
 
 AddUser.propTypes = {
 	onAddUser: PropTypes.func.isRequired,
+	users: PropTypes.array.isRequired,
 };
 
 export default AddUser;
