@@ -21,7 +21,7 @@ class UsersList extends Component {
 				{users.map(user => <User key={user.username} username={user.username}
 				                         numGamesPlayed={user.numGamesPlayed} showNumGamesPlayed={showNumGamesPlayed}/>)}
 				<button onClick={this.toggleNumGamesPlayed} className="smallButton">
-					{showNumGamesPlayed ? 'Hide the Number of Games Played' : 'Show the Number of Games Played'}
+					{showNumGamesPlayed ? 'Hide' : 'Show'} the Number of Games Played
 				</button>
 			</div>
 		)
