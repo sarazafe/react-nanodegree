@@ -52,7 +52,7 @@ class AddUser extends Component {
 		const {name, surname, username} = user;
 		return (<div>
 			{existingUser && (
-				<div>The user already exists</div>
+				<div className="error">The user already exists</div>
 			)}
 			<form onSubmit={this.addUser}>
 				<input
